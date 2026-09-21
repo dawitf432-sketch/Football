@@ -1,0 +1,261 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "schema": {
+        "name": "string",
+        "role": "string",
+        "country": "string",
+        "countryCode": "string",
+        "accessId": "string",
+        "status": "string",
+        "createdAt": "timestamp",
+        "lastLoginAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid)"
+      }
+    },
+    {
+      "name": "playerProfiles",
+      "schema": {
+        "userId": "string",
+        "age": "number",
+        "position": "string",
+        "dominantFoot": "string",
+        "location": "string",
+        "bio": "string",
+        "skills": "number",
+        "athleticism": "number",
+        "mindset": "number",
+        "nutrition": "number",
+        "discoverable": "boolean",
+        "profileStatus": "string"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid)"
+      }
+    },
+    {
+      "name": "coachProfiles",
+      "schema": {
+        "userId": "string",
+        "country": "string",
+        "bio": "string"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid)"
+      }
+    },
+    {
+      "name": "scoutProfiles",
+      "schema": {
+        "userId": "string",
+        "organization": "string",
+        "country": "string",
+        "verificationStatus": "string"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid)"
+      }
+    },
+    {
+      "name": "teams",
+      "schema": {
+        "name": "string",
+        "coachId": "string",
+        "country": "string",
+        "description": "string",
+        "createdAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || (isRole('COACH') && resource.data.coachId == request.auth.uid)"
+      }
+    },
+    {
+      "name": "accessIds",
+      "schema": {
+        "role": "string",
+        "country": "string",
+        "status": "string",
+        "assignedUserId": "string",
+        "createdAt": "timestamp",
+        "expiresAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAdmin() || request.auth == null", 
+        "write": "isAdmin()"
+      }
+    },
+    {
+      "name": "courses",
+      "schema": {
+        "title": "string",
+        "description": "string",
+        "thumbnail": "string",
+        "status": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin()"
+      }
+    },
+    {
+      "name": "showcases",
+      "schema": {
+        "playerId": "string",
+        "title": "string",
+        "videoUrl": "string",
+        "description": "string",
+        "status": "string",
+        "createdAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid) || (isRole('PLAYER') && request.resource.data.playerId == request.auth.uid)"
+      }
+    },
+    {
+      "name": "scholarships",
+      "schema": {
+        "providerId": "string",
+        "providerName": "string",
+        "organizationName": "string",
+        "title": "string",
+        "description": "string",
+        "country": "string",
+        "location": "string",
+        "ageRequirements": "string",
+        "minAge": "number",
+        "maxAge": "number",
+        "eligiblePositions": "array",
+        "playerRequirements": "string",
+        "benefits": "array",
+        "applicationDeadline": "string",
+        "availablePlaces": "number",
+        "applicationInstructions": "string",
+        "status": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || (isRole('SCHOLARSHIP_PROVIDER') && (request.resource.data.providerId == request.auth.uid || resource.data.providerId == request.auth.uid))"
+      }
+    },
+    {
+      "name": "applications",
+      "schema": {
+        "scholarshipId": "string",
+        "scholarshipTitle": "string",
+        "providerId": "string",
+        "playerId": "string",
+        "playerName": "string",
+        "playerCountry": "string",
+        "playerAge": "number",
+        "playerPosition": "string",
+        "status": "string",
+        "providerNotes": "string",
+        "appliedAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAdmin() || (isRole('SCHOLARSHIP_PROVIDER') && resource.data.providerId == request.auth.uid) || (isRole('PLAYER') && resource.data.playerId == request.auth.uid)",
+        "write": "isAdmin() || (isRole('PLAYER') && request.resource.data.playerId == request.auth.uid) || (isRole('SCHOLARSHIP_PROVIDER') && resource.data.providerId == request.auth.uid)"
+      }
+    },
+    {
+      "name": "providerProfiles",
+      "schema": {
+        "userId": "string",
+        "organizationName": "string",
+        "logoUrl": "string",
+        "country": "string",
+        "location": "string",
+        "description": "string",
+        "website": "string",
+        "contactEmail": "string",
+        "phone": "string",
+        "accreditationNumber": "string",
+        "verificationStatus": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated()",
+        "write": "isAdmin() || isOwner(resource, request.auth.uid)"
+      }
+    },
+    {
+      "name": "providerShortlists",
+      "schema": {
+        "providerId": "string",
+        "playerId": "string",
+        "playerName": "string",
+        "playerCountry": "string",
+        "playerAge": "number",
+        "playerPosition": "string",
+        "notes": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated() && (isAdmin() || resource.data.providerId == request.auth.uid)",
+        "write": "isAuthenticated() && (isAdmin() || resource.data.providerId == request.auth.uid || request.resource.data.providerId == request.auth.uid)"
+      }
+    },
+    {
+      "name": "messages",
+      "schema": {
+        "senderId": "string",
+        "receiverId": "string",
+        "text": "string",
+        "createdAt": "timestamp",
+        "read": "boolean"
+      },
+      "rules": {
+        "read": "isAdmin() || resource.data.senderId == request.auth.uid || resource.data.receiverId == request.auth.uid",
+        "write": "isAdmin() || request.resource.data.senderId == request.auth.uid"
+      }
+    },
+    {
+      "name": "scoutShortlists",
+      "schema": {
+        "scoutId": "string",
+        "playerId": "string",
+        "notes": "string",
+        "createdAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated() && (isAdmin() || resource.data.scoutId == request.auth.uid)",
+        "write": "isAuthenticated() && (isAdmin() || resource.data.scoutId == request.auth.uid || request.resource.data.scoutId == request.auth.uid)"
+      }
+    },
+    {
+      "name": "contactRequests",
+      "schema": {
+        "scoutId": "string",
+        "playerId": "string",
+        "message": "string",
+        "status": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      },
+      "rules": {
+        "read": "isAuthenticated() && (isAdmin() || resource.data.scoutId == request.auth.uid || resource.data.playerId == request.auth.uid)",
+        "write": "isAuthenticated() && (isAdmin() || resource.data.scoutId == request.auth.uid || resource.data.playerId == request.auth.uid || request.resource.data.scoutId == request.auth.uid)"
+      }
+    }
+  ],
+  "customRules": {
+    "isRole": "function isRole(role) { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role; }",
+    "isAdmin": "function isAdmin() { return isRole('ADMIN'); }"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Pro Football Class",
+  "description": "Professional football development, structured training, talent discovery, safeguarding-compliant messaging, and real-time alerts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

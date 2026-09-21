@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <!-- Drop Shadow Filter for 3D Relief -->
+    <filter id="pfc-depth-shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.85" />
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#00ff88" flood-opacity="0.25" />
+    </filter>
+
+    <filter id="pfc-inner-bevel" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+
+    <!-- Metallic Shield Outer Rim Gradients (3D Bevel Lighting) -->
+    <linearGradient id="shield-bevel-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#00ff88" />
+      <stop offset="60%" stop-color="#00c8ff" />
+      <stop offset="100%" stop-color="#051226" />
+    </linearGradient>
+
+    <linearGradient id="shield-bevel-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1f3d" />
+      <stop offset="50%" stop-color="#060c1a" />
+      <stop offset="100%" stop-color="#020409" />
+    </linearGradient>
+
+    <!-- 3D Titanium Shield Plate -->
+    <linearGradient id="shield-body-grad" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#0b172e" />
+      <stop offset="35%" stop-color="#070e1c" />
+      <stop offset="70%" stop-color="#040812" />
+      <stop offset="100%" stop-color="#010307" />
+    </linearGradient>
+
+    <!-- 3D Golden Apex Star -->
+    <linearGradient id="star-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff5b8" />
+      <stop offset="50%" stop-color="#ffcc00" />
+      <stop offset="100%" stop-color="#d48800" />
+    </linearGradient>
+    <linearGradient id="star-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d48800" />
+      <stop offset="100%" stop-color="#6e3c00" />
+    </linearGradient>
+
+    <!-- Volumetric 3D Ball Sphere (Radial highlight) -->
+    <radialGradient id="ball-sphere-3d" cx="36%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#d6e8ff" />
+      <stop offset="48%" stop-color="#6c84a8" />
+      <stop offset="78%" stop-color="#162238" />
+      <stop offset="100%" stop-color="#060b14" />
+    </radialGradient>
+
+    <!-- 3D Ball Seams Metallic Emerald/Cyan -->
+    <linearGradient id="seam-facet-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00ffaa" />
+      <stop offset="50%" stop-color="#00c8ff" />
+      <stop offset="100%" stop-color="#0055aa" />
+    </linearGradient>
+
+    <!-- Bevel Facet Light -->
+    <linearGradient id="facet-light" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Apex Wing Chevron Gradient -->
+    <linearGradient id="chevron-3d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00ff88" />
+      <stop offset="50%" stop-color="#00c8ff" />
+      <stop offset="100%" stop-color="#071b3b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ground Ambient Glow -->
+  <ellipse cx="60" cy="106" rx="42" ry="7" fill="#00ff88" opacity="0.3" filter="url(#pfc-depth-shadow)" />
+
+  <!-- MAIN 3D SHIELD EMBLEM -->
+  <g filter="url(#pfc-depth-shadow)">
+    <!-- 3D Outer Cast Shield Shadow/Bevel -->
+    <path
+      d="M60 6 L104 20 L104 56 C104 84 85 106 60 114 C35 106 16 84 16 56 L16 20 Z"
+      fill="url(#shield-bevel-dark)"
+      stroke="url(#shield-bevel-light)"
+      stroke-width="2.5"
+      stroke-linejoin="round"
+    />
+
+    <!-- Shield Left Flange Highlight (3D Light Edge) -->
+    <path
+      d="M60 6 L16 20 L16 56 C16 84 35 106 60 114 L60 6 Z"
+      fill="url(#facet-light)"
+      opacity="0.15"
+    />
+
+    <!-- Inner Shield Inset Plate (Recessed 3D Core) -->
+    <path
+      d="M60 12 L98 24 L98 55 C98 79 81 98 60 106 C39 98 22 79 22 55 L22 24 Z"
+      fill="url(#shield-body-grad)"
+      stroke="#00e5ff"
+      stroke-width="1.2"
+      stroke-opacity="0.35"
+      stroke-linejoin="round"
+    />
+
+    <!-- Diagonal Carbon-Tech Texture Lines in Background -->
+    <g opacity="0.08" stroke="#ffffff" stroke-width="1.2">
+      <line x1="28" y1="30" x2="92" y2="30" />
+      <line x1="26" y1="42" x2="94" y2="42" />
+      <line x1="26" y1="54" x2="94" y2="54" />
+      <line x1="28" y1="66" x2="92" y2="66" />
+      <line x1="33" y1="78" x2="87" y2="78" />
+      <line x1="42" y1="90" x2="78" y2="90" />
+    </g>
+
+    <!-- 3D DYNAMIC ASCENDING WINGS / CHEVRONS -->
+    <path
+      d="M32 40 L60 22 L88 40 L82 45 L60 30 L38 45 Z"
+      fill="url(#chevron-3d)"
+      stroke="#ffffff"
+      stroke-width="0.75"
+      stroke-opacity="0.6"
+    />
+    <path
+      d="M38 50 L60 34 L82 50 L77 54 L60 41 L43 54 Z"
+      fill="url(#chevron-3d)"
+      opacity="0.65"
+    />
+
+    <!-- 3D RELIEF FOOTBALL (SPHERE WITH VOLUMETRIC SHADING) -->
+    <g transform="translate(60, 68)">
+      <!-- Ball Drop Shadow inside the shield -->
+      <ellipse cx="0" cy="24" rx="25" ry="5" fill="#000000" opacity="0.75" />
+
+      <!-- Ball Sphere Body -->
+      <circle cx="0" cy="0" r="26" fill="url(#ball-sphere-3d)" stroke="#00ff88" stroke-width="1.4" stroke-opacity="0.7" />
+
+      <!-- 3D Central Beveled Pentagon -->
+      <!-- Facet 1: Central Pentagon Face -->
+      <polygon
+        points="0,-8 9,-1 6,9 -6,9 -9,-1"
+        fill="#040a16"
+        stroke="url(#seam-facet-grad)"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+      <!-- Inner star core in central pentagon -->
+      <circle cx="0" cy="1.5" r="2" fill="#00ff88" />
+
+      <!-- 3D Seams to outer sphere edges (Embossed 3D Bevel) -->
+      <!-- North Seam -->
+      <line x1="0" y1="-8" x2="0" y2="-26" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <line x1="0.8" y1="-8" x2="0.8" y2="-26" stroke="#00ff88" stroke-width="1" stroke-linecap="round" />
+
+      <!-- North-East Seam -->
+      <line x1="9" y1="-1" x2="23" y2="-12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <line x1="9" y1="-0.4" x2="23" y2="-11.4" stroke="#00e5ff" stroke-width="1" stroke-linecap="round" />
+
+      <!-- South-East Seam -->
+      <line x1="6" y1="9" x2="17" y2="20" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <line x1="6" y1="9.5" x2="17" y2="20.5" stroke="#020817" stroke-width="1" stroke-linecap="round" />
+
+      <!-- South-West Seam -->
+      <line x1="-6" y1="9" x2="-17" y2="20" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <line x1="-6" y1="9.5" x2="-17" y2="20.5" stroke="#020817" stroke-width="1" stroke-linecap="round" />
+
+      <!-- North-West Seam -->
+      <line x1="-9" y1="-1" x2="-23" y2="-12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <line x1="-9" y1="-0.4" x2="-23" y2="-11.4" stroke="#00e5ff" stroke-width="1" stroke-linecap="round" />
+
+      <!-- Outer Truncated Panels with 3D Depth -->
+      <path d="M0 -26 C9 -26 18 -21 23 -12 L9 -1 Z" fill="#0b172a" fill-opacity="0.65" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+      <path d="M0 -26 C-9 -26 -18 -21 -23 -12 L-9 -1 Z" fill="#00ff88" fill-opacity="0.18" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+      <path d="M23 -12 C27 -3 27 8 17 20 L6 9 Z" fill="#040a17" fill-opacity="0.8" />
+      <path d="M-23 -12 C-27 -3 -27 8 -17 20 L-6 9 Z" fill="#00e5ff" fill-opacity="0.2" />
+      <path d="M-17 20 C-9 26 9 26 17 20 L6 9 L-6 9 Z" fill="#02050e" fill-opacity="0.9" />
+
+      <!-- Specular Light Glint on Ball (Volumetric Spherical 3D Glass Arc) -->
+      <path
+        d="M-16 -18 C-7 -25 7 -25 16 -18 C12 -21 0 -24 -12 -18 Z"
+        fill="#ffffff"
+        opacity="0.75"
+      />
+      <ellipse cx="-8" cy="-12" rx="4" ry="2" transform="rotate(-30 -8 -12)" fill="#ffffff" opacity="0.65" />
+    </g>
+
+    <!-- 3D GOLDEN APEX EXCELLENCE STAR (FACETED GEM RENDERING) -->
+    <g transform="translate(60, 15)">
+      <!-- Star Backing Glow -->
+      <circle cx="0" cy="0" r="8" fill="#ffcc00" opacity="0.35" filter="url(#pfc-depth-shadow)" />
+      <!-- Star Left Facets (Lit) -->
+      <polygon points="0,-10 2.2,-2.5 9.5,-2.5 3.6,1.8 5.8,9 0,4.6" fill="url(#star-light)" />
+      <!-- Star Right Facets (Shadow) -->
+      <polygon points="0,-10 0,4.6 -5.8,9 -3.6,1.8 -9.5,-2.5 -2.2,-2.5" fill="url(#star-dark)" />
+      <!-- Center Diamond Point -->
+      <polygon points="0,-3 2.5,0 0,3 -2.5,0" fill="#ffffff" />
+    </g>
+
+    <!-- Front Beveled Border Specular Rim Light -->
+    <path
+      d="M60 8 L101 21 L101 35"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-opacity="0.7"
+    />
+    <path
+      d="M60 8 L19 21 L19 35"
+      stroke="#ffffff"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-opacity="0.9"
+    />
+  </g>
+</svg>

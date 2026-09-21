@@ -1,0 +1,59 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && (
+        (request.auth.token.email == 'dawitf645@gmail.com' && request.auth.token.email_verified == true)
+      );
+    }
+    
+    // Showcase videos uploaded by players
+    match /showcase_videos/{playerId}/{fileName} {
+      allow read: if true;
+      allow write: if isAuthenticated() && (request.auth.uid == playerId || isAdmin()) &&
+                     request.resource.size < 100 * 1024 * 1024 &&
+                     request.resource.contentType.matches('video/.*');
+    }
+
+    // Provider / Club logos
+    match /logos/{fileName} {
+      allow read: if true;
+      allow write: if isAuthenticated() && 
+                     request.resource.size < 5 * 1024 * 1024 &&
+                     request.resource.contentType.matches('image/.*');
+    }
+
+    // Chat attachments (images, PDFs)
+    match /chat_attachments/{conversationId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                     request.resource.size < 10 * 1024 * 1024 &&
+                     (request.resource.contentType.matches('image/.*') || request.resource.contentType == 'application/pdf');
+    }
+
+    // Direct message attachments
+    match /messages/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                     request.resource.size < 10 * 1024 * 1024 &&
+                     request.resource.contentType.matches('image/.*');
+    }
+
+    // User profile avatars
+    match /avatars/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin()) &&
+                     request.resource.size < 5 * 1024 * 1024 &&
+                     request.resource.contentType.matches('image/.*');
+    }
+
+    // Default deny for everything else
+    match /{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

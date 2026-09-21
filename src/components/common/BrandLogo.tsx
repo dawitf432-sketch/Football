@@ -241,18 +241,18 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       {/* Modern High-End Wordmark */}
       {!iconOnly && (
         <div className="flex flex-col leading-none">
-          <div className={`font-black uppercase flex items-center gap-1.5 font-mono ${titleSizes} ${lightMode ? 'text-gray-950' : 'text-white'}`}>
-            <span className="tracking-tight drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">PRO FOOTBALL</span>
-            <span className="bg-gradient-to-r from-[#00ff88] via-[#00e5ff] to-[#00ff88] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,255,136,0.4)]">
+          <div className={`font-extrabold uppercase flex items-center gap-1.5 font-display ${titleSizes} ${lightMode ? 'text-gray-950' : 'text-white'}`}>
+            <span className="tracking-tight">PRO FOOTBALL</span>
+            <span className="text-emerald-400 tracking-tight">
               CLASS
             </span>
           </div>
           {showSubtitle && (
             <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.18em] text-gray-400 uppercase font-sans">
-                {language === 'am' ? 'የላቀ የእግር ኳስ መድረክ' : 'ELITE PATHWAY PORTAL'}
+              <span className="text-[8.5px] sm:text-[9.5px] font-semibold tracking-[0.16em] text-slate-400 uppercase font-sans">
+                {language === 'am' ? 'የላቀ የእግር ኳስ መድረክ' : 'ACADEMY & SCOUTING'}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] shadow-[0_0_6px_#00ff88] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             </div>
           )}
         </div>
@@ -262,7 +262,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
   if (to) {
     return (
-      <Link to={to} className="focus:outline-none focus:ring-1 focus:ring-[#00ff88]/50 rounded-sm">
+      <Link to={to} className="focus:outline-none focus:ring-1 focus:ring-emerald-500/50 rounded-md">
         {content}
       </Link>
     );

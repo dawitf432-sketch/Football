@@ -64,7 +64,7 @@ export function onAppAuthChange(callback: (user: AppUser | null) => void): () =>
 
     if (firebaseUser) {
       let role = "PLAYER";
-      const isMasterEmail = firebaseUser.email === "dawitf645@gmail.com";
+      const isMasterEmail = firebaseUser.email === "dawitf645@gmail.com" || firebaseUser.email === "dawitf432@gmail.com";
 
       try {
         const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));

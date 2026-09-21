@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, ShieldCheck, Zap, Apple, Brain, ChevronRight } from "lucide-react";
+import { ArrowRight, Target, ShieldCheck, Zap, Apple, Brain } from "lucide-react";
 
 export default function HomeAcademyIntro() {
   const pillars = [
@@ -8,15 +8,15 @@ export default function HomeAcademyIntro() {
       title: "Technical Mastery",
       tag: "BALL MASTERY",
       icon: Target,
-      color: "text-[#00ff88]",
-      desc: "First-touch precision, close control in tight spaces, and bilateral passing accuracy.",
+      color: "text-emerald-400",
+      desc: "First-touch precision, close control under pressure, and bilateral passing accuracy.",
     },
     {
       step: "02",
       title: "Tactical Intelligence",
       tag: "SPATIAL IQ",
       icon: ShieldCheck,
-      color: "text-[#00d4ff]",
+      color: "text-sky-400",
       desc: "Pre-orientation scanning, transition pressing triggers, and spatial awareness.",
     },
     {
@@ -24,15 +24,15 @@ export default function HomeAcademyIntro() {
       title: "Athleticism",
       tag: "SPEED & POWER",
       icon: Zap,
-      color: "text-[#00ff88]",
-      desc: "0-30m acceleration velocity, change-of-direction biomechanics, and aerobic recovery.",
+      color: "text-amber-400",
+      desc: "0-30m sprint velocity, change-of-direction biomechanics, and aerobic recovery.",
     },
     {
       step: "04",
       title: "Match Nutrition",
       tag: "FUEL & RECOVERY",
       icon: Apple,
-      color: "text-[#00d4ff]",
+      color: "text-emerald-400",
       desc: "Pre-match glycogen loading, fluid hydration osmolarity, and muscular repair.",
     },
     {
@@ -40,31 +40,31 @@ export default function HomeAcademyIntro() {
       title: "Elite Mindset",
       tag: "PSYCHOLOGY",
       icon: Brain,
-      color: "text-[#00ff88]",
+      color: "text-purple-400",
       desc: "High-pressure decision-making, error recovery anchors, and mental resilience.",
     },
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-[#02050e] border-b border-white/10">
+    <section className="py-14 md:py-20 bg-[#0a0f1d] border-b border-slate-800/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-[11px] font-mono font-bold text-[#00ff88] uppercase tracking-wider mb-1">
-              Methodology
+            <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1.5">
+              Development Methodology
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase text-white font-mono">
+            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase text-white font-display tracking-tight">
               The 5-Pillar Development Framework
             </h2>
-            <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-xl">
-              Structured developmental curriculum used by European first-team academies to build complete football athletes.
+            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl leading-relaxed">
+              Structured developmental curriculum modeled after top European first-team academies to cultivate complete football athletes.
             </p>
           </div>
 
           <Link
             to="/academy"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#00ff88] hover:text-white uppercase tracking-wider transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-white uppercase tracking-wider transition-colors shrink-0"
           >
             <span>View Full Curriculum</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -72,44 +72,41 @@ export default function HomeAcademyIntro() {
         </div>
 
         {/* Responsive 5-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {pillars.map((p) => {
             const Icon = p.icon;
             return (
               <div
                 key={p.title}
-                className="p-4 rounded-sm bg-[#050a1a] border border-white/10 hover:border-white/30 transition-all flex flex-col justify-between group"
+                className="p-5 rounded-xl bg-[#11182c] border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between group shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-bold text-gray-500">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-mono font-bold text-slate-500">
                       PILLAR {p.step}
                     </span>
-                    <span className="text-[9px] font-mono font-bold text-gray-400 bg-white/5 px-2 py-0.5 rounded-sm">
+                    <span className="text-[9px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">
                       {p.tag}
                     </span>
                   </div>
 
-                  <div className="w-8 h-8 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center mb-3">
-                    <Icon className={`w-4 h-4 ${p.color}`} />
+                  <div className="w-10 h-10 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                    <Icon className={`w-5 h-5 ${p.color}`} />
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-1.5 group-hover:text-[#00ff88] transition-colors">
+                  <h3 className="text-sm font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors font-display">
                     {p.title}
                   </h3>
 
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-slate-400 leading-relaxed">
                     {p.desc}
                   </p>
                 </div>
 
-                <Link
-                  to="/academy"
-                  className="mt-4 pt-2.5 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-gray-400 group-hover:text-white"
-                >
-                  <span>Explore Drills</span>
-                  <ChevronRight className="w-3 h-3 text-[#00ff88]" />
-                </Link>
+                <div className="pt-4 mt-4 border-t border-slate-800/80 text-[11px] font-semibold text-slate-500 group-hover:text-emerald-400 transition-colors flex items-center gap-1">
+                  <span>Explore drills</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </div>
               </div>
             );
           })}

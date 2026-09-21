@@ -32,7 +32,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const unsubscribe = onAppAuthChange(async (appUser) => {
       if (appUser) {
-        const isMasterEmail = appUser.email === "dawitf645@gmail.com";
+        const isMasterEmail = appUser.email === "dawitf645@gmail.com" || appUser.email === "dawitf432@gmail.com";
         const isMasterId = appUser.accessId === "PFC-ADMIN-MASTER1";
         const hasAdminRole = appUser.role === "ADMIN";
 
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
               {
                 uid: appUser.uid,
                 name: appUser.name || "Dawit (Master Admin)",
-                email: appUser.email || "dawitf645@gmail.com",
+                email: appUser.email || (isMasterEmail ? appUser.email : "dawitf645@gmail.com"),
                 role: "ADMIN",
                 status: "ACTIVE",
                 lastLoginAt: new Date(),

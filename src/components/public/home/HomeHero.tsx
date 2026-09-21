@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, ShieldCheck, ChevronRight, Award, Compass, Users } from "lucide-react";
 import { BrandLogo } from "../../common/BrandLogo";
 
 interface HomeHeroProps {
@@ -20,84 +20,87 @@ export default function HomeHero({ stats }: HomeHeroProps) {
   };
 
   return (
-    <section className="relative pt-24 md:pt-28 pb-12 md:pb-16 bg-[#030611] border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-24 md:pt-32 pb-14 md:pb-20 bg-[#0a0f1d] border-b border-slate-800/80 overflow-hidden">
+      {/* Refined subtle ambient spotlight */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/5 blur-[120px] pointer-events-none rounded-full" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto">
-          {/* Logo & Category Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-sm bg-white/5 border border-white/10 mb-5">
+          {/* Official Accreditation Badge */}
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 mb-6 shadow-sm">
             <BrandLogo size="sm" showSubtitle={false} />
-            <span className="h-3 w-px bg-white/20"></span>
-            <span className="text-[11px] font-mono font-bold text-[#00ff88] uppercase tracking-wider flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#00ff88]" />
-              UEFA & FIFA Benchmark
+            <span className="h-3 w-px bg-slate-700"></span>
+            <span className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              UEFA & FIFA Academy Benchmark
             </span>
           </div>
 
-          {/* Main Headline - Clean, responsive typography */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white font-mono tracking-tight leading-tight mb-4">
+          {/* Main Headline - High-End Athletic Typography */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-white tracking-tight font-display leading-[1.1] mb-5">
             Elite Football Development{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff88] via-[#00f0ff] to-[#00b8ff]">
+            <span className="text-emerald-400 block sm:inline">
               & Scouting Network
             </span>
           </h1>
 
-          {/* Short Description */}
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl mx-auto mb-7">
-            A unified digital academy providing structured UEFA-standard drills, physical performance tracking, and direct connectivity between talent, coaches, and accredited club scouts.
+          {/* Description */}
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+            A unified digital academy providing structured European-standard drills, physical performance tracking, and direct connectivity between rising talent, certified coaches, and accredited club scouts.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto mb-10">
+          {/* Clean Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto mb-12">
             <Link
               to="/access"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-[#00ff88] hover:bg-[#00e67a] text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(0,255,136,0.25)]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-sm active:scale-95"
             >
               <span>Get Started</span>
-              <ArrowRight className="w-4 h-4 text-black" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
 
             <Link
               to="/academy"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-white/5 hover:bg-white/10 text-white font-mono font-bold text-xs uppercase tracking-wider border border-white/15 transition-all hover:border-[#00d4ff]/40"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 font-semibold text-xs uppercase tracking-wider border border-slate-700 transition-colors"
             >
-              <span>Explore Academy</span>
+              <span>Explore Curriculum</span>
             </Link>
           </div>
 
-          {/* Responsive 4-Item Stats Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/10">
-            <div className="p-3 rounded-sm bg-[#050a1a] border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-white font-mono">
+          {/* Responsive 4-Item Stats Bar with Refined Contrast */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 border-t border-slate-800/80">
+            <div className="p-4 rounded-xl bg-[#11182c] border border-slate-800 text-center">
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-display">
                 {data.trainingDrills}+
               </div>
-              <div className="text-[11px] font-mono text-gray-400 uppercase mt-0.5">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-1">
                 Academy Drills
               </div>
             </div>
 
-            <div className="p-3 rounded-sm bg-[#050a1a] border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-[#00ff88] font-mono">
+            <div className="p-4 rounded-xl bg-[#11182c] border border-slate-800 text-center">
+              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">
                 {data.verifiedAthletes}+
               </div>
-              <div className="text-[11px] font-mono text-gray-400 uppercase mt-0.5">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-1">
                 Verified Athletes
               </div>
             </div>
 
-            <div className="p-3 rounded-sm bg-[#050a1a] border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-[#00d4ff] font-mono">
+            <div className="p-4 rounded-xl bg-[#11182c] border border-slate-800 text-center">
+              <div className="text-2xl sm:text-3xl font-extrabold text-sky-400 font-display">
                 {data.certifiedCoaches}
               </div>
-              <div className="text-[11px] font-mono text-gray-400 uppercase mt-0.5">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-1">
                 UEFA Coaches
               </div>
             </div>
 
-            <div className="p-3 rounded-sm bg-[#050a1a] border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-white font-mono">
+            <div className="p-4 rounded-xl bg-[#11182c] border border-slate-800 text-center">
+              <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">
                 {data.accreditedScouts}
               </div>
-              <div className="text-[11px] font-mono text-gray-400 uppercase mt-0.5">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-1">
                 Scout Network
               </div>
             </div>

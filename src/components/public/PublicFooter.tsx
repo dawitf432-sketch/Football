@@ -79,20 +79,20 @@ export default function PublicFooter() {
   ];
 
   return (
-    <footer className="bg-[#02040a] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative text-gray-400 text-xs">
+    <footer className="bg-[#0a0f1d] border-t border-slate-800/80 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative text-slate-400 text-xs">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand & Mission (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <BrandLogo size="md" showSubtitle={true} to="/" />
 
-            <p className="text-gray-400 text-xs leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
               {t.footer.brandDesc}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-white/5 border border-white/10 text-white/80 font-mono text-[11px]">
-                <Shield className="w-3.5 h-3.5 text-[#00ff88]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 font-medium text-xs shadow-sm">
+                <Shield className="w-3.5 h-3.5 text-emerald-400" />
                 <span>{t.footer.safeguardingBadge}</span>
               </div>
               <PWAInstallButton variant="compact" />
@@ -101,40 +101,40 @@ export default function PublicFooter() {
 
           {/* Academy Navigation Links */}
           <div>
-            <h4 className="text-white font-mono font-bold text-xs uppercase tracking-wider mb-4">
+            <h4 className="text-white font-semibold text-xs uppercase tracking-wider mb-4 font-display">
               Curriculum & Roles
             </h4>
-            <ul className="space-y-2 font-medium">
-              <li><Link to="/training" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.training}</Link></li>
-              <li><Link to="/positions" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.positions}</Link></li>
-              <li><Link to="/athleticism" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.athleticism}</Link></li>
-              <li><Link to="/nutrition" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.nutrition}</Link></li>
-              <li><Link to="/mindset" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.mindset}</Link></li>
+            <ul className="space-y-2.5 font-medium">
+              <li><Link to="/training" className="hover:text-emerald-400 transition-colors">{t.nav.training}</Link></li>
+              <li><Link to="/positions" className="hover:text-emerald-400 transition-colors">{t.nav.positions}</Link></li>
+              <li><Link to="/athleticism" className="hover:text-emerald-400 transition-colors">{t.nav.athleticism}</Link></li>
+              <li><Link to="/nutrition" className="hover:text-emerald-400 transition-colors">{t.nav.nutrition}</Link></li>
+              <li><Link to="/mindset" className="hover:text-emerald-400 transition-colors">{t.nav.mindset}</Link></li>
             </ul>
           </div>
 
           {/* Discovery & Pathways Links */}
           <div>
-            <h4 className="text-white font-mono font-bold text-xs uppercase tracking-wider mb-4">
+            <h4 className="text-white font-semibold text-xs uppercase tracking-wider mb-4 font-display">
               Pathways & Teams
             </h4>
-            <ul className="space-y-2 font-medium">
-              <li><Link to="/academy" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.academy}</Link></li>
-              <li><Link to="/showcase" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.showcase}</Link></li>
-              <li><Link to="/scholarships" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.scholarships}</Link></li>
-              <li><Link to="/teams" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.teams}</Link></li>
-              <li><Link to="/about" className="hover:text-white hover:text-[#00ff88] transition-colors">{t.nav.about}</Link></li>
+            <ul className="space-y-2.5 font-medium">
+              <li><Link to="/academy" className="hover:text-emerald-400 transition-colors">{t.nav.academy}</Link></li>
+              <li><Link to="/showcase" className="hover:text-emerald-400 transition-colors">{t.nav.showcase}</Link></li>
+              <li><Link to="/scholarships" className="hover:text-emerald-400 transition-colors">{t.nav.scholarships}</Link></li>
+              <li><Link to="/teams" className="hover:text-emerald-400 transition-colors">{t.nav.teams}</Link></li>
+              <li><Link to="/about" className="hover:text-emerald-400 transition-colors">{t.nav.about}</Link></li>
             </ul>
           </div>
 
           {/* Portals & Legal Support */}
           <div>
-            <h4 className="text-white font-mono font-bold text-xs uppercase tracking-wider mb-4">
+            <h4 className="text-white font-semibold text-xs uppercase tracking-wider mb-4 font-display">
               Portals & Governance
             </h4>
-            <ul className="space-y-2 font-medium">
+            <ul className="space-y-2.5 font-medium">
               <li>
-                <Link to="/access" className="text-[#00ff88] hover:underline font-bold">
+                <Link to="/access" className="text-emerald-400 hover:text-emerald-300 font-semibold">
                   {t.nav.studentAccess}
                 </Link>
               </li>
@@ -175,7 +175,7 @@ export default function PublicFooter() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-gray-500 font-mono">
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>{t.footer.rights}</div>
           <div className="flex items-center gap-4">
             <span>UEFA & CAF Certified Framework</span>

@@ -1,4 +1,4 @@
-import { db, storage } from "../../../lib/firebase";
+import { db, storage, auth } from "../../../lib/firebase";
 import { 
   collection, 
   query, 
@@ -364,16 +364,21 @@ export const providerService = {
       );
       let snap = await getDocs(q);
 
-      // If database has no discoverable players yet, seed realistic talents
+      let players: PlayerPublicProfile[];
       if (snap.empty) {
-        await this.seedDiscoverableTalents();
-        snap = await getDocs(q);
+        players = INITIAL_TALENTS.map(talent => {
+          const { video, ...playerData } = talent;
+          return {
+            id: talent.userId,
+            ...playerData
+          } as PlayerPublicProfile;
+        });
+      } else {
+        players = snap.docs.map(docSnap => ({
+          id: docSnap.id,
+          ...docSnap.data()
+        } as PlayerPublicProfile));
       }
-
-      let players: PlayerPublicProfile[] = snap.docs.map(docSnap => ({
-        id: docSnap.id,
-        ...docSnap.data()
-      } as PlayerPublicProfile));
 
       // Apply client-side filters for maximum flexibility
       if (filters) {
@@ -421,15 +426,39 @@ export const providerService = {
         where("status", "==", "APPROVED")
       );
       const snap = await getDocs(q);
-      return snap.docs.map(d => ({ id: d.id, ...d.data() } as ShowcaseVideo));
+      const showcases = snap.docs.map(d => ({ id: d.id, ...d.data() } as ShowcaseVideo));
+      if (showcases.length > 0) return showcases;
+
+      // Fallback to sample verified talent showcase if doc not in Firestore
+      const talent = INITIAL_TALENTS.find(t => t.userId === playerId);
+      if (talent?.video) {
+        return [{
+          id: `showcase_${playerId}`,
+          playerId: talent.userId,
+          playerName: talent.name,
+          playerPosition: talent.position,
+          playerCountry: talent.country,
+          title: talent.video.title,
+          videoUrl: talent.video.videoUrl,
+          description: talent.video.description,
+          matchInfo: talent.video.matchInfo,
+          status: "APPROVED" as const,
+          createdAt: "2026-06-01T00:00:00.000Z"
+        }];
+      }
+      return [];
     } catch (e) {
-      console.error("Error fetching showcases for player:", e);
+      console.warn("Could not fetch showcases for player:", e);
       return [];
     }
   },
 
   async seedDiscoverableTalents(): Promise<void> {
     try {
+      const currentUserEmail = auth.currentUser?.email?.toLowerCase();
+      const isAdmin = currentUserEmail === "dawitf645@gmail.com" || currentUserEmail === "dawitf432@gmail.com";
+      if (!isAdmin) return;
+
       const batch = writeBatch(db);
       for (const talent of INITIAL_TALENTS) {
         const playerRef = doc(db, "playerProfiles", talent.userId);
@@ -458,7 +487,7 @@ export const providerService = {
       }
       await batch.commit();
     } catch (e) {
-      console.error("Failed to seed discoverable talents:", e);
+      console.warn("Skipping discoverable talent seed write:", e);
     }
   },
 

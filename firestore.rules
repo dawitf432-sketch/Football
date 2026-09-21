@@ -16,14 +16,16 @@ service cloud.firestore {
     
     // Check if the current user is an admin
     function isAdmin() {
-      return (request.auth.token.email == 'dawitf645@gmail.com' && request.auth.token.email_verified == true) || isRole('ADMIN');
+      return (request.auth.token.email == 'dawitf645@gmail.com' && request.auth.token.email_verified == true) ||
+             (request.auth.token.email == 'dawitf432@gmail.com' && request.auth.token.email_verified == true) ||
+             isRole('ADMIN');
     }
 
     match /users/{userId} {
       allow read: if isAuthenticated();
       // Allow users to update their own record, or admins to do anything.
       // We do not allow users to self-assign ADMIN unless bootstrapped via the master email or demo admin ID.
-      allow create: if (request.auth.uid == userId && (request.resource.data.role != 'ADMIN' || request.resource.data.accessId == 'PFC-ADMIN-MASTER1' || (request.auth.token.email == 'dawitf645@gmail.com' && request.auth.token.email_verified == true))) || isAdmin();
+      allow create: if (request.auth.uid == userId && (request.resource.data.role != 'ADMIN' || request.resource.data.accessId == 'PFC-ADMIN-MASTER1' || ((request.auth.token.email == 'dawitf645@gmail.com' || request.auth.token.email == 'dawitf432@gmail.com') && request.auth.token.email_verified == true))) || isAdmin();
       allow update: if (request.auth.uid == userId && request.resource.data.role == resource.data.role) || isAdmin();
       allow delete: if isAdmin();
     }
